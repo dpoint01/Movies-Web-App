@@ -1,0 +1,39 @@
+<h1 style= "font-family: Impact; color: MidnightBlue"> List of <%=@total_movies%> Movies (A-Z) : </h1>
+
+<form action="/movies" method="get" >
+  <label for="query">Search: </label>
+  <input type="text" name="query" id="query" placeholder="movie title or key word"/>
+
+  <input type="submit" value="Search" />
+</form>
+
+
+<ul style="font-family: Courier">
+  <% count = 0 %>
+  <% @all_movies.each do |movie| %>
+    <li><a href ="<%= "/movies/#{movie[:id]}" %>"> <%=movie[:title]%> </a></li>
+    <% count += 1 %>
+  <% end %>
+</ul>
+
+<% if @search %>
+    <p><em><%=count%> result(s) generated for <strong><%=params[:query]%> </strong> </em></p>
+<% end %>
+
+
+<% if !@search %>
+  <% if @page >  1 %>
+    <a href= "<%= "/movies?page=#{@page - 1}" %>" style= "font-family: Impact; color: MidnightBlue"> Previous Page </a>  &nbsp
+  <%  end %>
+    <a href ="<%= "/movies?page=#{@page + 1}" %>" style= "font-family: Impact; color: MidnightBlue"> Next Page </a>
+
+  <p><em><%=count%> movies displayed <em><p>
+  <h3 style="color: red"> <em> Page: <%=@page %>  </em> </h3>
+
+<% end %>
+
+
+<h3> <a href="<%="/movies"%>"><img src="http://homeinteriorsdesigns.info/wp-content/uploads/home-button-icon.png" width="43px" heigh="35px"/> </a> </h3>
+
+
+

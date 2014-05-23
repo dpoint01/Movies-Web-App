@@ -1,0 +1,11 @@
+<h1 style= "font-family: Impact; color: MidnightBlue"> <%=@movie[0][:title] %></h1>
+
+<ul>
+  <% @movie[0].each do |key, value| %>
+    <% if value != nil %>
+      <li> <strong> <%=key %> : <%=value %>  </strong></li>
+    <% end %>
+  <% end %>
+</ul>
+<h3> <a href="<%="/movies"%>"><img src="http://homeinteriorsdesigns.info/wp-content/uploads/home-button-icon.png" width="43px" heigh="35px"/> </a> </h3>
+
